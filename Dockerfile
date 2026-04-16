@@ -46,9 +46,11 @@ WORKDIR /app
 # --- Runtime stage: minimal Debian image ---
 FROM debian:bullseye-slim
 
+# NOTE: Changed AUTOAR_RESULTS_DIR to store results under a timestamped subdir
+# by default; adjust AUTOAR_RESULTS_DIR at runtime if needed.
 ENV AUTOAR_SCRIPT_PATH=/usr/local/bin/autoar \
     AUTOAR_CONFIG_FILE=/app/autoar.yaml \
-    AUTOAR_RESULTS_DIR=/app/new-results
+    AUTOAR_RESULTS_DIR=/app/results
 
 WORKDIR /app
 
@@ -79,4 +81,4 @@ RUN set -eux; \
 
 # Install uber-apk-signer for signing patched APKs (optional, but recommended)
 RUN set -eux; \
-    curl -L "https://github.com/patrickfav/uber-apk-signer/releases/download/v1.3.0/uber-apk-signer-1.3.0.jar" -o /
+    curl -L "https://github.com/patr
