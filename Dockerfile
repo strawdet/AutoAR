@@ -73,12 +73,9 @@ RUN set -eux; \
     rm /tmp/jadx.zip
 
 # Install apktool for MITM patching (decode/encode APKs)
+# Bumped to 2.10.0 - fixes some manifest parsing issues I ran into with newer APKs
 RUN set -eux; \
-    APKTOOL_VERSION="2.9.3"; \
+    APKTOOL_VERSION="2.10.0"; \
     curl -L "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_${APKTOOL_VERSION}.jar" -o /usr/local/bin/apktool.jar; \
     echo '#!/bin/sh\njava -jar /usr/local/bin/apktool.jar "$@"' > /usr/local/bin/apktool; \
     chmod +x /usr/local/bin/apktool
-
-# Install uber-apk-signer for signing patched APKs (optional, but recommended)
-RUN set -eux; \
-    curl -L "https://github.com/patr
