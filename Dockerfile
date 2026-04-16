@@ -48,6 +48,8 @@ FROM debian:bullseye-slim
 
 # NOTE: Changed AUTOAR_RESULTS_DIR to store results under a timestamped subdir
 # by default; adjust AUTOAR_RESULTS_DIR at runtime if needed.
+# Personal note: mounting /app/results as a volume is handy for keeping output
+# across container restarts without rebuilding.
 ENV AUTOAR_SCRIPT_PATH=/usr/local/bin/autoar \
     AUTOAR_CONFIG_FILE=/app/autoar.yaml \
     AUTOAR_RESULTS_DIR=/app/results
@@ -77,5 +79,4 @@ RUN set -eux; \
 RUN set -eux; \
     APKTOOL_VERSION="2.10.0"; \
     curl -L "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_${APKTOOL_VERSION}.jar" -o /usr/local/bin/apktool.jar; \
-    echo '#!/bin/sh\njava -jar /usr/local/bin/apktool.jar "$@"' > /usr/local/bin/apktool; \
-    chmod +x /usr/local/bin/apktool
+    echo '#!/bin/sh\njava -jar /usr/loc
