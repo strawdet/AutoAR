@@ -19,6 +19,8 @@ Results are automatically uploaded to **Cloudflare R2 storage** and linked direc
 **Public VPS / dashboard:** configure Supabase-backed login and JWT verification for the HTTP API — see [docs/DASHBOARD_AUTH.md](docs/DASHBOARD_AUTH.md).
 
 > **Personal fork note:** I primarily use this for HackerOne programs. If you're doing the same, check out my notes in [docs/PERSONAL_NOTES.md](docs/PERSONAL_NOTES.md) for my preferred tool config and rate limit settings.
+>
+> **My defaults:** I've bumped the default Nuclei rate limit from 150 to 100 req/s to avoid getting flagged on stricter programs, and set httpx timeout to 10s instead of 5s. See `config/defaults.go`.
 
 ---
 
@@ -36,5 +38,4 @@ Results are automatically uploaded to **Cloudflare R2 storage** and linked direc
 | 🔗 **JavaScript**      | Extract secrets, API endpoints, auth tokens from JS files                                                                              |
 | 🐙 **GitHub Recon**    | Org-level and repo-level scanning for secrets, dependency confusion                                                                    |
 | 📱 **Mobile Apps**     | APK/IPA analysis with MobSF + MITM traffic interception                                                                                |
-| ⚙️ **Misconfigs**      | 100+ service misconfiguration checks                                                                                                   |
-| 🏴‍☠️ **BB Scope**     | Fetch scope from HackerOne, Bugcrowd, Intigriti, YesWe
+| ⚙️ **Misconfigs**  
