@@ -50,9 +50,12 @@ FROM debian:bullseye-slim
 # by default; adjust AUTOAR_RESULTS_DIR at runtime if needed.
 # Personal note: mounting /app/results as a volume is handy for keeping output
 # across container restarts without rebuilding.
+# Personal note: set AUTOAR_LOG_LEVEL=debug in your .env when troubleshooting
+# scan failures - saved me a lot of head-scratching.
 ENV AUTOAR_SCRIPT_PATH=/usr/local/bin/autoar \
     AUTOAR_CONFIG_FILE=/app/autoar.yaml \
-    AUTOAR_RESULTS_DIR=/app/results
+    AUTOAR_RESULTS_DIR=/app/results \
+    AUTOAR_LOG_LEVEL=info
 
 WORKDIR /app
 
@@ -78,5 +81,4 @@ RUN set -eux; \
 # Bumped to 2.10.0 - fixes some manifest parsing issues I ran into with newer APKs
 RUN set -eux; \
     APKTOOL_VERSION="2.10.0"; \
-    curl -L "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_${APKTOOL_VERSION}.jar" -o /usr/local/bin/apktool.jar; \
-    echo '#!/bin/sh\njava -jar /usr/loc
+    curl -L "https://bitbucket.org/iBotPea
