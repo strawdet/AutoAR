@@ -21,6 +21,8 @@ Results are automatically uploaded to **Cloudflare R2 storage** and linked direc
 > **Personal fork note:** I primarily use this for HackerOne programs. If you're doing the same, check out my notes in [docs/PERSONAL_NOTES.md](docs/PERSONAL_NOTES.md) for my preferred tool config and rate limit settings.
 >
 > **My defaults:** I've bumped the default Nuclei rate limit from 150 to 100 req/s to avoid getting flagged on stricter programs, and set httpx timeout to 10s instead of 5s. See `config/defaults.go`.
+>
+> **Added 2025-07:** Also set subfinder's default source timeout to 30s (was 15s) — was getting incomplete results on slower APIs like SecurityTrails.
 
 ---
 
@@ -36,6 +38,4 @@ Results are automatically uploaded to **Cloudflare R2 storage** and linked direc
 | 🧠 **Zero-Days**       | Smart scan configured for detected tech stacks — finds active CVEs                                                                     |
 | ☁️ **S3 Buckets**      | Enumerate and scan AWS S3 buckets for exposure and misconfig                                                                           |
 | 🔗 **JavaScript**      | Extract secrets, API endpoints, auth tokens from JS files                                                                              |
-| 🐙 **GitHub Recon**    | Org-level and repo-level scanning for secrets, dependency confusion                                                                    |
-| 📱 **Mobile Apps**     | APK/IPA analysis with MobSF + MITM traffic interception                                                                                |
-| ⚙️ **Misconfigs**  
+| 🐙 **GitHub Recon**    | Org-level and repo-level scanning for secrets, dependency confusion                                                    
