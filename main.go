@@ -23,13 +23,14 @@ func main() {
 	fmt.Print(banner)
 
 	var (
-		target    = flag.String("target", "", "Target domain or URL to recon (required)")
+		target     = flag.String("target", "", "Target domain or URL to recon (required)")
 		configFile = flag.String("config", "config.yaml", "Path to configuration file")
-		outputDir = flag.String("output", "output", "Directory to store results")
-		workflows = flag.String("workflows", "", "Comma-separated list of workflows to run (default: all)")
-		threads   = flag.Int("threads", 10, "Number of concurrent threads")
-		verbose   = flag.Bool("verbose", false, "Enable verbose output")
-		version   = flag.Bool("version", false, "Print version and exit")
+		outputDir  = flag.String("output", "output", "Directory to store results")
+		workflows  = flag.String("workflows", "", "Comma-separated list of workflows to run (default: all)")
+		// Bumped default threads from 10 to 5 to avoid rate-limiting on bug bounty targets
+		threads = flag.Int("threads", 5, "Number of concurrent threads")
+		verbose = flag.Bool("verbose", false, "Enable verbose output")
+		version = flag.Bool("version", false, "Print version and exit")
 	)
 
 	flag.Parse()
