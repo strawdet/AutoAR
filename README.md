@@ -25,6 +25,8 @@ Results are automatically uploaded to **Cloudflare R2 storage** and linked direc
 > **Added 2025-07:** Also set subfinder's default source timeout to 30s (was 15s) — was getting incomplete results on slower APIs like SecurityTrails.
 >
 > **Added 2025-07:** Increased httpx's max-response-body-size to 5MB (was 2MB) — was missing some large JS bundles that contain juicy endpoints.
+>
+> **Added 2025-07:** Set nuclei's `-retries` flag to 2 (was 0) — occasionally was missing findings on flaky endpoints, especially on programs with CDN-level rate limiting that returns 429s intermittently.
 
 ---
 
@@ -39,4 +41,4 @@ Results are automatically uploaded to **Cloudflare R2 storage** and linked direc
 | 💥 **Nuclei Scanning** | Automated vulnerability scanning using Nuclei templates with rate limiting                                                             |
 | 🧠 **Zero-Days**       | Smart scan configured for detected tech stacks — finds active CVEs                                                                     |
 | ☁️ **S3 Buckets**      | Enumerate and scan AWS S3 buckets for exposure and misconfig                                                                           |
-| 🔗 **JavaScript**      | Extract secrets, API endpoints, auth tokens from JS files                                                                        
+| 🔗 **Ja
